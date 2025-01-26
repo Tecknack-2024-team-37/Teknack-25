@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 1518707903
+    locked: 0
+  - name: Track
+    uniqueID: 2475927111
+    locked: 0
+  - name: Objects
+    uniqueID: 799481873
+    locked: 0
