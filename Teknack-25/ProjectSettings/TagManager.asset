@@ -12,9 +12,9 @@ TagManager:
   - Water
   - UI
   - Track
-  - Objects
+  - Bridge
+  - Object
   - Player
-  - 
   - 
   - 
   - 
@@ -44,9 +44,9 @@ TagManager:
   - name: Ground
     uniqueID: 1518707903
     locked: 0
-  - name: Track
+  - name: midground
     uniqueID: 2475927111
     locked: 0
-  - name: Objects
+  - name: foreground
     uniqueID: 799481873
     locked: 0
