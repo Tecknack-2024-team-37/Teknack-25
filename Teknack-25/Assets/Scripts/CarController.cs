@@ -9,11 +9,15 @@ public class CarController : MonoBehaviour
     Vector2 move;
     public float moveSpeed;
 
-    private void Start() {
-        rb = GetComponent<Rigidbody2D> ();
+    public static bool PointerDown = false;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update() {
+    private void Update()
+    {
         move.x = Joystick.Horizontal;
         move.y = Joystick.Vertical;
 
@@ -21,10 +25,17 @@ public class CarController : MonoBehaviour
         float hAxis = move.x;
         float vAxis = move.y;
         float zAxis = Mathf.Atan2(hAxis, vAxis) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3 (0f, 0f, -zAxis);
+        transform.eulerAngles = new Vector3(0f, 0f, -zAxis);
     }
 
-    private void FixedUpdate() {
-        rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+    private void FixedUpdate()
+    {
+        if(PointerDown){
+            rb.velocity = Vector3.zero;
+        }
+        else{
+            rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+        }
+        
     }
 }
