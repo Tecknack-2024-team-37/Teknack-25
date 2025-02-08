@@ -44,6 +44,12 @@ TagManager:
   - name: Ground
     uniqueID: 1518707903
     locked: 0
+  - name: Skidmarks
+    uniqueID: 487616659
+    locked: 0
+  - name: Smokeparticle
+    uniqueID: 2664608763
+    locked: 0
   - name: midground
     uniqueID: 2475927111
     locked: 0
