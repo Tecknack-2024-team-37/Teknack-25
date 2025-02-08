@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D> ();
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class CarController : MonoBehaviour
         //rotation
         float hAxis = move.x;
         float vAxis = move.y;
-        float zAxis = Mathf.Atan2(hAxis, vAxis) * Mathf.Rad2Deg;
+        float zAxis = Mathf.Atan2 (hAxis, vAxis) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(0f, 0f, -zAxis);
     }
 
@@ -34,8 +34,10 @@ public class CarController : MonoBehaviour
             rb.velocity = Vector3.zero;
         }
         else{
-            rb.MovePosition(rb.position + move * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition (rb.position + move * moveSpeed * Time.fixedDeltaTime);
         }
         
     }
 }
+
+
