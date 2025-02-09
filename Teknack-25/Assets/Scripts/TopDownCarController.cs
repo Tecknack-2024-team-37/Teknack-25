@@ -76,6 +76,31 @@ public class TopDownCarController : MonoBehaviour
         carRigidbody2D.velocity = forwardVelocity + rightVelocity * modifiedDriftFactor;
     }
 
+    float GetLateralVelocity()
+    {
+        //return how fast the car id mving
+        return Vector2.Dot(transform.right, carRigidbody2D.velocity);
+    }
+
+    public bool IsTyreScreeching(out float lateralVelocity, out bool isBraking)
+    {
+        lateralVelocity = GetLateralVelocity();
+        isBraking = false;
+
+        if (accelerationInput < 0 && velocityVsUp >0)
+        {
+            isBraking = true;
+            return true;
+        }
+
+        if (Mathf.Abs(GetLateralVelocity()) > 4.0f)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public void SetInputVector(Vector2 inputVector)
     {
         steeringInput = inputVector.x;
