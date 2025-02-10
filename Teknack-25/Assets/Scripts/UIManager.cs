@@ -22,4 +22,12 @@ public class UIManager : MonoBehaviour
   public void OnEnterPausePress(){
         pauseUI.SetActive(true);
   }
+
+  public void MainMenu(){
+    SceneManager.LoadSceneAsync(0);
+   }
+
+   public void AllLevels(){
+    SceneManager.LoadSceneAsync(1);
+   }
 }
