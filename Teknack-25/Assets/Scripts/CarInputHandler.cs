@@ -6,6 +6,7 @@ public class CarInputHandler : MonoBehaviour
 {
     // Components
     TopDownCarController topDownCarController;
+    public float jumpScale;
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -25,5 +26,8 @@ public class CarInputHandler : MonoBehaviour
         {
             topDownCarController.SetInputVector(inputVector);
         }
+
+        if(Input.GetButtonDown("Jump"))
+            topDownCarController.Jump(jumpScale, 0.0f);
     }
 }

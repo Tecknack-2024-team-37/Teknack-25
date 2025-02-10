@@ -10,11 +10,21 @@ public class TopDownCarController : MonoBehaviour
     public float turnFactor = 3.5f;
     public float maxSpeed = 20;
 
+    [Header("Sprites")]
+    public SpriteRenderer carSpriteRenderer;
+    public SpriteRenderer carShadowRenderer;
+
+    [Header("Jumping")]
+    public AnimationCurve jumpCurve;
+    //public ParticleSystem landingParticleSystem;
+
     // Local variables
     float accelerationInput = 0;
     float steeringInput = 0;
     float rotationAngle = 0;
     public float velocityVsUp = 0;
+
+    bool isJumping = false;
 
     // Components
     Rigidbody2D carRigidbody2D;
@@ -93,7 +103,7 @@ public class TopDownCarController : MonoBehaviour
             return true;
         }
 
-        if (Mathf.Abs(GetLateralVelocity()) > 4.0f)
+        if (Mathf.Abs(GetLateralVelocity()) > 2.0f)
         {
             return true;
         }
@@ -106,4 +116,53 @@ public class TopDownCarController : MonoBehaviour
         steeringInput = inputVector.x;
         accelerationInput = inputVector.y;
     }
+
+    public float GetVelocityMagnitude()
+    {
+        return carRigidbody2D.velocity.magnitude;
+    }
+
+    public void Jump(float jumpHeightScale, float jumpPushScale)
+    {
+        if(!isJumping)
+            StartCoroutine(JumpCo(jumpHeightScale, jumpPushScale));
+    }
+
+    private IEnumerator JumpCo(float jumpHeightScale, float jumpPushScale)
+    {
+        isJumping = true;
+
+        float jumpStartTime = Time.time;
+        float jumpDuration = 2;
+        Vector3 originalScale = carSpriteRenderer.transform.localScale;
+        var originalScaleShadow = carShadowRenderer.transform.localPosition;
+        var originalCarPosition = carShadowRenderer.transform.localPosition;
+        while(isJumping)
+        {
+            float jumpCompletedPercentage = (Time.time - jumpStartTime) / jumpDuration;
+            jumpCompletedPercentage = Mathf.Clamp01(jumpCompletedPercentage);
+            var localscale1 = Vector3.one + Vector3.one * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
+            carSpriteRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
+//
+            //carShadowRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
+            carSpriteRenderer.transform.localScale = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
+            carShadowRenderer.transform.localPosition = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
+
+            if(jumpCompletedPercentage == 1.0f)
+                break;
+
+            yield return null;
+        }
+
+       carSpriteRenderer.transform.localScale = originalScale;
+        //carSpriteRenderer.transform.localPosition = originalCarPosition;
+        carShadowRenderer.transform.localPosition = originalScaleShadow;
+        carShadowRenderer.transform.localScale = originalScale;
+
+        isJumping = false;
+    }
 }
+
+
+
+
