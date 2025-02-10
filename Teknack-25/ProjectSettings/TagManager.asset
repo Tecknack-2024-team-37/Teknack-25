@@ -6,6 +6,8 @@ TagManager:
   tags:
   - OverpassTrigger
   - UnderpassTrigger
+  - OverpassEntryTrigger
+  - OverpassExitTrigger
   layers:
   - Default
   - TransparentFX
@@ -46,11 +48,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground
-    uniqueID: 1518707903
-    locked: 0
   - name: RaceTrackOverpass
     uniqueID: 2198100341
+    locked: 0
+  - name: Ground
+    uniqueID: 1518707903
     locked: 0
   - name: Skidmarks
     uniqueID: 487616659
@@ -63,4 +65,7 @@ TagManager:
     locked: 0
   - name: foreground
     uniqueID: 799481873
+    locked: 0
+  - name: Player
+    uniqueID: 2840861195
     locked: 0

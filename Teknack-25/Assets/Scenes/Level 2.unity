@@ -89088,8 +89088,8 @@ GameObject:
   - component: {fileID: 476896091}
   - component: {fileID: 476896090}
   m_Layer: 0
-  m_Name: OverpassTrigger (1)
-  m_TagString: OverpassTrigger
+  m_Name: OverpassExitTrigger
+  m_TagString: OverpassExitTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89200,7 +89200,7 @@ Transform:
   m_GameObject: {fileID: 476896089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.3466, y: 11.4458, z: 0}
+  m_LocalPosition: {x: 15.38, y: 17.16, z: 0}
   m_LocalScale: {x: 0.498411, y: 0.08607828, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -89309,8 +89309,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2096866955
-  m_SortingLayer: 2
-  m_SortingOrder: 9
+  m_SortingLayer: 1
+  m_SortingOrder: 6
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.13999999, y: 0.13999999, z: 0}
   m_MaxChunkCount: 16
@@ -89740,7 +89740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &881889035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89824,8 +89824,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1454106101
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 097782735540f2d4db5606eae04ae6a7, type: 3}
   m_Color: {r: 0.84276724, g: 0.8254967, b: 0.07155558, a: 1}
@@ -89863,11 +89863,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 937322832328294902, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.02
+      value: -4.07
       objectReference: {fileID: 0}
     - target: {fileID: 937322832328294902, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.02
+      value: -10.72
       objectReference: {fileID: 0}
     - target: {fileID: 937322832328294902, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -89901,14 +89901,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 3059567534677067976, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3059567534677067976, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4397442609573661541, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
       propertyPath: m_Name
       value: Car
       objectReference: {fileID: 0}
+    - target: {fileID: 7220937368672064213, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220937368672064213, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429421614426631148, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429421614426631148, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7611096485497120889, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4397442609573661541, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1824898035}
   m_SourcePrefab: {fileID: 100100000, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
 --- !u!1 &959691484
 GameObject:
@@ -89927,7 +89958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &959691485
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -90011,8 +90042,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2096866955
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 097782735540f2d4db5606eae04ae6a7, type: 3}
   m_Color: {r: 0.84276724, g: 0.8254967, b: 0.07155558, a: 1}
@@ -116151,8 +116182,8 @@ GameObject:
   - component: {fileID: 1484477513}
   - component: {fileID: 1484477512}
   m_Layer: 0
-  m_Name: OverpassTrigger
-  m_TagString: OverpassTrigger
+  m_Name: OverpassEntryTrigger
+  m_TagString: OverpassEntryTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116263,7 +116294,7 @@ Transform:
   m_GameObject: {fileID: 1484477511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.38, y: 15.36, z: 0}
+  m_LocalPosition: {x: 15.42, y: 11.36, z: 0}
   m_LocalScale: {x: 0.4969953, y: 0.07351349, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116345,6 +116376,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496198258}
   m_CullTransparentMesh: 1
+--- !u!1 &1824898030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4397442609573661541, guid: 2d6c4656f4ababd408f00e7e60b15beb, type: 3}
+  m_PrefabInstance: {fileID: 903708073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1824898035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824898030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066500aa288881044b18fa5a54be254b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1858891383
 GameObject:
   m_ObjectHideFlags: 0
