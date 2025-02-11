@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelTrailRenderHandler : MonoBehaviour
+public class WheelTrailRenderHandler1 : MonoBehaviour
 {
     // Components
-    TopDownCarController topDownCarController;
+    TopDownCarController1 topDownCarController;
     TrailRenderer trailRenderer; // Fixed type
 
     void Awake() 
     {
-        topDownCarController = GetComponentInParent<TopDownCarController>();
+        topDownCarController = GetComponentInParent<TopDownCarController1>();
         
         trailRenderer = GetComponent<TrailRenderer>(); // Fixed method usage
         

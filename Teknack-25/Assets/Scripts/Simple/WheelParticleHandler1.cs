@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WheelParticleHandler : MonoBehaviour
+public class WheelParticleHandler1 : MonoBehaviour
 {
     //local variables
     float particleEmissionRate = 0;
 
     //components
-    TopDownCarController topDownCarController;
+    TopDownCarController1 topDownCarController;
     
     ParticleSystem particleSystemSmoke;
     ParticleSystem.EmissionModule particleSystemEmissionModule;
 
     void Awake()
     {
-        topDownCarController = GetComponentInParent<TopDownCarController>();
+        topDownCarController = GetComponentInParent<TopDownCarController1>();
 
         particleSystemSmoke = GetComponent<ParticleSystem>();
 
