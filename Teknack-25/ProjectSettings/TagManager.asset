@@ -8,6 +8,7 @@ TagManager:
   - UnderpassTrigger
   - OverpassEntryTrigger
   - OverpassExitTrigger
+  - OverpassCollider
   layers:
   - Default
   - TransparentFX

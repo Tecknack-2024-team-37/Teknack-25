@@ -7,9 +7,15 @@ public class CarLayerHandler : MonoBehaviour
     List<SpriteRenderer> carSpriteRenderers = new List<SpriteRenderer>();
     bool isOnOverpass = false; // Ensures the car stays in the correct layer
 
+    [SerializeField] private Transform bridgeLeftLimit;  // Assign in Inspector
+    [SerializeField] private Transform bridgeRightLimit; // Assign in Inspector
+
+    private Rigidbody2D rb;
+
     void Awake()
     {
         carSpriteRenderers.AddRange(GetComponentsInChildren<SpriteRenderer>());
+        rb = GetComponent<Rigidbody2D>();
 
         Debug.Log($"CarLayerHandler initialized. Found {carSpriteRenderers.Count} SpriteRenderers.");
     }
@@ -27,6 +33,16 @@ public class CarLayerHandler : MonoBehaviour
         {
             spriteRenderer.sortingLayerName = layerName;
             Debug.Log($"SpriteRenderer {spriteRenderer.gameObject.name} now in layer: {layerName}");
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (isOnOverpass && bridgeLeftLimit != null && bridgeRightLimit != null)
+        {
+            // Restrict car's X movement within the bridge boundaries
+            float clampedX = Mathf.Clamp(transform.position.x, bridgeLeftLimit.position.x, bridgeRightLimit.position.x);
+            transform.position = new Vector2(clampedX, transform.position.y);
         }
     }
 
@@ -48,4 +64,3 @@ public class CarLayerHandler : MonoBehaviour
         }
     }
 }
-
