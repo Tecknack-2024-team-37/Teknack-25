@@ -5,12 +5,12 @@ using UnityEngine;
 public class WheelTrailRenderHandler : MonoBehaviour
 {
     // Components
-    TopDownCarController topDownCarController;
+    TopDownCarController1 topDownCarController;
     TrailRenderer trailRenderer; // Fixed type
 
     void Awake() 
     {
-        topDownCarController = GetComponentInParent<TopDownCarController>();
+        topDownCarController = GetComponentInParent<TopDownCarController1>();
         
         trailRenderer = GetComponent<TrailRenderer>(); // Fixed method usage
         
