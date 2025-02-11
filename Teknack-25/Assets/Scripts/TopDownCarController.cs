@@ -45,11 +45,17 @@ public class TopDownCarController : MonoBehaviour
 
     void ApplyEngineForce()
     {
+        if (isJumping && accelerationInput < 0)
+            accelerationInput = 0;
+
         velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
 
-        if (velocityVsUp > maxSpeed && accelerationInput > 0) return;
-        if (velocityVsUp < -maxSpeed * 0.5f && accelerationInput < 0) return;
-        if (carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput > 0) return;
+        if (velocityVsUp > maxSpeed && accelerationInput > 0)
+            return;
+        if (velocityVsUp < -maxSpeed * 0.5f && accelerationInput < 0) 
+            return;
+        if (carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed && accelerationInput > 0 && !isJumping)
+            return;
 
         if (accelerationInput == 0)
         {
@@ -99,6 +105,9 @@ public class TopDownCarController : MonoBehaviour
         lateralVelocity = GetLateralVelocity();
         isBraking = false;
 
+        if(isJumping)
+            return  false;
+
         if (accelerationInput < 0 && velocityVsUp >0)
         {
             isBraking = true;
@@ -143,6 +152,9 @@ public class TopDownCarController : MonoBehaviour
         //Disable collisions
         carCollider.enabled = false;
 
+        //Push the object forward as we passed a jump
+        carRigidbody2D.AddForce(carRigidbody2D.velocity.normalized * jumpPushScale * 3.14f, ForceMode2D.Impulse);
+
         Vector3 originalScale = carSpriteRenderer.transform.localScale;
         var originalScaleShadow = carShadowRenderer.transform.localPosition;
         var originalCarPosition = carShadowRenderer.transform.localPosition;
@@ -164,15 +176,27 @@ public class TopDownCarController : MonoBehaviour
             yield return null;
         }
 
-       carSpriteRenderer.transform.localScale = originalScale;
-        carSpriteRenderer.transform.localPosition = originalCarPosition;
-        carShadowRenderer.transform.localPosition = originalScaleShadow;
-        carShadowRenderer.transform.localScale = originalScale;
+        //Check if landing is ok or not
+        if (Physics2D.OverlapCircle(transform.position, 1.5f))
+        {
+            //Something is below the car so we need to jump again
+            isJumping = false;
+
+            //add a small jump and push the car forward a bit
+            Jump(0.2f, 0.6f);
+        }
+        else 
+        {
+         carSpriteRenderer.transform.localScale = originalScale;
+         carSpriteRenderer.transform.localPosition = originalCarPosition;
+         carShadowRenderer.transform.localPosition = originalScaleShadow;
+         carShadowRenderer.transform.localScale = originalScale;
 
          //We are safe to land, so enable collider
-        carCollider.enabled = true;
+         carCollider.enabled = true;
 
-        isJumping = false;
+         isJumping = false;
+        }
     }
 
     //Detect jump trigger 
