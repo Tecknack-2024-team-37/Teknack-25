@@ -8,6 +8,7 @@ TagManager:
   - UnderpassTrigger
   - OverpassEntryTrigger
   - OverpassExitTrigger
+  - Jump
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: RaceTrack
+  - name: Flying
     uniqueID: 4283094679
     locked: 0
   - name: Default
