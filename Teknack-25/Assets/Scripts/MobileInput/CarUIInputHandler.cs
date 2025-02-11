@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CarUIInputHandler : MonoBehaviour
 {
-    CarInputHandler playerCarInputHandler;
+    CarInputHandler1 playerCarInputHandler;
 
     Vector2 inputVector = Vector2.zero;
 
    private void Awake(){
-         CarInputHandler[] carinputHandlers = FindObjectsOfType<CarInputHandler>();
+         CarInputHandler1[] carinputHandlers = FindObjectsOfType<CarInputHandler1>();
 
-         foreach(CarInputHandler carInputHandler in carinputHandlers){
+         foreach(CarInputHandler1 carInputHandler in carinputHandlers){
             if(carInputHandler.isUIInput){
                 playerCarInputHandler = carInputHandler;
                 break;
