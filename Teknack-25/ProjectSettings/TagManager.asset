@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OverpassTrigger
   - UnderpassTrigger
+  - Jump
   layers:
   - Default
   - TransparentFX

@@ -28,10 +28,12 @@ public class TopDownCarController : MonoBehaviour
 
     // Components
     Rigidbody2D carRigidbody2D;
+    Collider2D carCollider;
 
     void Awake()
     {
         carRigidbody2D = GetComponent<Rigidbody2D>();
+        carCollider = GetComponentInChildren<Collider2D>();
     }
 
     void FixedUpdate()
@@ -133,17 +135,25 @@ public class TopDownCarController : MonoBehaviour
         isJumping = true;
 
         float jumpStartTime = Time.time;
-        float jumpDuration = 2;
+        float jumpDuration = carRigidbody2D.velocity.magnitude * 0.2f;
+
+        jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
+        jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
+        
+        //Disable collisions
+        carCollider.enabled = false;
+
         Vector3 originalScale = carSpriteRenderer.transform.localScale;
         var originalScaleShadow = carShadowRenderer.transform.localPosition;
         var originalCarPosition = carShadowRenderer.transform.localPosition;
+        
         while(isJumping)
         {
             float jumpCompletedPercentage = (Time.time - jumpStartTime) / jumpDuration;
             jumpCompletedPercentage = Mathf.Clamp01(jumpCompletedPercentage);
             var localscale1 = Vector3.one + Vector3.one * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
             carSpriteRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
-//
+
             //carShadowRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
             carSpriteRenderer.transform.localScale = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
             carShadowRenderer.transform.localPosition = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
@@ -155,11 +165,26 @@ public class TopDownCarController : MonoBehaviour
         }
 
        carSpriteRenderer.transform.localScale = originalScale;
-        //carSpriteRenderer.transform.localPosition = originalCarPosition;
+        carSpriteRenderer.transform.localPosition = originalCarPosition;
         carShadowRenderer.transform.localPosition = originalScaleShadow;
         carShadowRenderer.transform.localScale = originalScale;
 
+         //We are safe to land, so enable collider
+        carCollider.enabled = true;
+
         isJumping = false;
+    }
+
+    //Detect jump trigger 
+
+    void OnTriggerEnter2D(Collider2D collider2d)
+    {
+        if (collider2d.CompareTag("Jump"))
+        {
+            //Get the jumo data from the jump
+            JumpData jumpData = collider2d.GetComponent<JumpData>();
+            Jump(jumpData.jumpHeightScale, jumpData.jumpPushScale);
+        }
     }
 }
 
