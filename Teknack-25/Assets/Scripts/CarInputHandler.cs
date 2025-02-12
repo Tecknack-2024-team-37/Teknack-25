@@ -6,7 +6,7 @@ public class CarInputHandler : MonoBehaviour
 {
     // Components
     TopDownCarController topDownCarController;
-    public float jumpScale;
+    
     public bool isUIInput = false;
 
     Vector2 inputVector = Vector2.zero;
@@ -35,15 +35,16 @@ public class CarInputHandler : MonoBehaviour
             topDownCarController.SetInputVector(inputVector);
         }
 
-        if(Input.GetButtonDown("Jump"))
-            topDownCarController.Jump(jumpScale, 0.0f);
-
-        }
+        
+        
 
         
     }
-    public void SetInput(Vector2 newInput){
+    
+    void SetInput(Vector2 newInput)
+    {
         inputVector = newInput;
     }
 
+    }
 }

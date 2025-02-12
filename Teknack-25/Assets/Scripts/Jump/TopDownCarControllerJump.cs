@@ -167,7 +167,7 @@ public class TopDownCarControllerJump : MonoBehaviour
             carSpriteRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
 
             //carShadowRenderer.transform.localScale = new Vector3(0.2785205f,0.2785205f,2f);
-            carSpriteRenderer.transform.localScale = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
+            carSpriteRenderer.transform.localScale = new Vector3(1, 1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
             carShadowRenderer.transform.localPosition = new Vector3(1, -1, 0.0f) * 3 * jumpCurve.Evaluate(jumpCompletedPercentage) * jumpHeightScale;
 
             if(jumpCompletedPercentage == 1.0f)
@@ -200,14 +200,23 @@ public class TopDownCarControllerJump : MonoBehaviour
     }
 
     //Detect jump trigger 
-
+private bool inTrigger = false;
     void OnTriggerEnter2D(Collider2D collider2d)
     {
-        if (collider2d.CompareTag("Jump"))
+        if (collider2d.CompareTag("Jump") && !inTrigger)
         {
             //Get the jumo data from the jump
+            inTrigger = true;
             JumpData jumpData = collider2d.GetComponent<JumpData>();
             Jump(jumpData.jumpHeightScale, jumpData.jumpPushScale);
+        }
+    }
+    void OnTriggerExit2D(Collider2D collider2d) {
+        if (collider2d.CompareTag("Jump") && !inTrigger)
+        {
+            //Get the jumo data from the jump
+            inTrigger = false;
+            Debug.Log("hfdf");
         }
     }
 }
