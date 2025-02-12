@@ -47,10 +47,11 @@ public class CarUIInputHandler : MonoBehaviour
          playerCarInputHandler.SetInput(inputVector);
     }
 
-    public void OnSteerRightPress(){
-        inputVector.y = 1.0f;
-         playerCarInputHandler.SetInput(inputVector);
-    }
+   public void OnSteerRightPress(){
+    inputVector.x = 1.0f; // Correcting input for right turn
+    playerCarInputHandler.SetInput(inputVector);
+}
+
 
     public void OnSteerRelease(){
         inputVector.y = 0.0f;
