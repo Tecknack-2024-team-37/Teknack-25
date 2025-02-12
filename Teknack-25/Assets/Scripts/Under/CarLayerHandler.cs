@@ -7,8 +7,8 @@ public class CarLayerHandler : MonoBehaviour
     List<SpriteRenderer> carSpriteRenderers = new List<SpriteRenderer>();
     bool isOnOverpass = false; // Ensures the car stays in the correct layer
 
-    [SerializeField] private Transform bridgeLeftLimit;  // Assign in Inspector
-    [SerializeField] private Transform bridgeRightLimit; // Assign in Inspector
+    [SerializeField] private Transform bridgeLeftLimit;  // Initial bridge limits (assigned in Inspector)
+    [SerializeField] private Transform bridgeRightLimit; // Can change dynamically
 
     private Rigidbody2D rb;
 
@@ -52,6 +52,19 @@ public class CarLayerHandler : MonoBehaviour
 
         if (collider2d.CompareTag("OverpassEntryTrigger"))  // Entry point of bridge
         {
+            // Get the BridgeLimits component from the trigger
+            BridgeLimits bridgeLimits = collider2d.GetComponent<BridgeLimits>();
+            if (bridgeLimits != null)
+            {
+                bridgeLeftLimit = bridgeLimits.leftLimit;
+                bridgeRightLimit = bridgeLimits.rightLimit;
+                Debug.Log($"🚗 Updating bridge limits: Left={bridgeLeftLimit.position.x}, Right={bridgeRightLimit.position.x}");
+            }
+            else
+            {
+                Debug.LogError($"❌ No BridgeLimits component found on {collider2d.gameObject.name}!");
+            }
+
             isOnOverpass = true;
             UpdateSortingAndCollisionLayers();
             Debug.Log("🚗 Car entered Overpass - Switching to RaceTrackOverpass Layer");
