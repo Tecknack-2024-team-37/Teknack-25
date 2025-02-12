@@ -144,13 +144,13 @@ public class TopDownCarControllerJump : MonoBehaviour
         isJumping = true;
 
         float jumpStartTime = Time.time;
-        float jumpDuration = carRigidbody2D.velocity.magnitude * 0.2f;
+        float jumpDuration = carRigidbody2D.velocity.magnitude * 0.1f;
 
-        jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.05f;
+        jumpHeightScale = jumpHeightScale * carRigidbody2D.velocity.magnitude * 0.03f;
         jumpHeightScale = Mathf.Clamp(jumpHeightScale, 0.0f, 1.0f);
         
         //Disable collisions
-        carCollider.enabled = false;
+        //carCollider.enabled = false;
 
         //Push the object forward as we passed a jump
         carRigidbody2D.AddForce(carRigidbody2D.velocity.normalized * jumpPushScale * 3.14f, ForceMode2D.Impulse);
@@ -176,47 +176,38 @@ public class TopDownCarControllerJump : MonoBehaviour
             yield return null;
         }
 
-        //Check if landing is ok or not
-        if (Physics2D.OverlapCircle(transform.position, 1.5f))
-        {
-            //Something is below the car so we need to jump again
-            isJumping = false;
+        // //Check if landing is ok or not
+        // if (Physics2D.OverlapCircle(transform.position, 1.5f))
+        // {
+        //     //Something is below the car so we need to jump again
+        //     isJumping = false;
 
-            //add a small jump and push the car forward a bit
-            Jump(0.2f, 0.6f);
-        }
-        else 
-        {
+        //     //add a small jump and push the car forward a bit
+        //     Jump(0.2f, 0.6f);
+        // }
+        // else 
+        // {
          carSpriteRenderer.transform.localScale = originalScale;
          carSpriteRenderer.transform.localPosition = originalCarPosition;
          carShadowRenderer.transform.localPosition = originalScaleShadow;
          carShadowRenderer.transform.localScale = originalScale;
 
          //We are safe to land, so enable collider
-         carCollider.enabled = true;
+         //carCollider.enabled = true;
 
          isJumping = false;
-        }
+        //}
     }
 
     //Detect jump trigger 
-private bool inTrigger = false;
+
     void OnTriggerEnter2D(Collider2D collider2d)
     {
-        if (collider2d.CompareTag("Jump") && !inTrigger)
+        if (collider2d.CompareTag("Jump"))
         {
             //Get the jumo data from the jump
-            inTrigger = true;
             JumpData jumpData = collider2d.GetComponent<JumpData>();
             Jump(jumpData.jumpHeightScale, jumpData.jumpPushScale);
-        }
-    }
-    void OnTriggerExit2D(Collider2D collider2d) {
-        if (collider2d.CompareTag("Jump") && !inTrigger)
-        {
-            //Get the jumo data from the jump
-            inTrigger = false;
-            Debug.Log("hfdf");
         }
     }
 }
