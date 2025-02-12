@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - OverpassTrigger
-  - UnderpassTrigger
   - OverpassEntryTrigger
+  - OverpassCollider
   - OverpassExitTrigger
+  - UnderpassTrigger
   layers:
   - Default
   - TransparentFX
@@ -43,29 +43,29 @@ TagManager:
   - 
   m_SortingLayers:
   - name: RaceTrack
-    uniqueID: 4283094679
+    uniqueID: 2680874789
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: RaceTrackOverpass
-    uniqueID: 2198100341
+    uniqueID: 3147432133
     locked: 0
   - name: Ground
-    uniqueID: 1518707903
+    uniqueID: 3090020427
     locked: 0
   - name: Skidmarks
-    uniqueID: 487616659
+    uniqueID: 2339280031
     locked: 0
   - name: Smokeparticle
-    uniqueID: 2664608763
+    uniqueID: 1738770813
     locked: 0
   - name: midground
-    uniqueID: 2475927111
+    uniqueID: 1127982971
     locked: 0
   - name: foreground
-    uniqueID: 799481873
+    uniqueID: 3777151951
     locked: 0
   - name: Player
-    uniqueID: 2840861195
+    uniqueID: 2907898407
     locked: 0
