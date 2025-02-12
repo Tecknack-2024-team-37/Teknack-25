@@ -16,4 +16,8 @@ public class MainMenu : MonoBehaviour
   public void OnEnterBackPress(){
     pauseUI.SetActive(false);
   }
+
+  public void OnEnterCreditsPress(){
+    SceneManager.LoadSceneAsync(5);
+  }
 }
