@@ -12,6 +12,10 @@ public class CarLayerHandler : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    // ✅ Lists to store GameObjects whose colliders should be toggled
+    [SerializeField] private List<GameObject> objectsToDisableOnEntry; 
+    [SerializeField] private List<GameObject> objectsToEnableOnExit;
+
     void Awake()
     {
         carSpriteRenderers.AddRange(GetComponentsInChildren<SpriteRenderer>());
@@ -67,13 +71,31 @@ public class CarLayerHandler : MonoBehaviour
 
             isOnOverpass = true;
             UpdateSortingAndCollisionLayers();
+            ToggleColliders(objectsToDisableOnEntry, false); // Disable colliders on entry
             Debug.Log("🚗 Car entered Overpass - Switching to RaceTrackOverpass Layer");
         }
         else if (collider2d.CompareTag("OverpassExitTrigger"))  // Exit point of bridge
         {
             isOnOverpass = false;
             UpdateSortingAndCollisionLayers();
+            ToggleColliders(objectsToEnableOnExit, true); // Enable colliders on exit
             Debug.Log("🏁 Car exited Overpass - Switching to Default Layer");
+        }
+    }
+
+    private void ToggleColliders(List<GameObject> objects, bool state)
+    {
+        foreach (GameObject obj in objects)
+        {
+            if (obj != null)
+            {
+                Collider2D col = obj.GetComponent<Collider2D>(); // Get the Collider2D component
+                if (col != null)
+                {
+                    col.enabled = state;
+                    Debug.Log($"Collider on {obj.name} set to {state}");
+                }
+            }
         }
     }
 }
