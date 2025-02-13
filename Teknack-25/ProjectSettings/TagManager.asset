@@ -8,6 +8,7 @@ TagManager:
   - OverpassCollider
   - OverpassExitTrigger
   - UnderpassTrigger
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

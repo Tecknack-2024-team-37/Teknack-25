@@ -53,10 +53,11 @@ public class CarUIInputHandler : MonoBehaviour
 }
 
 
-    public void OnSteerRelease(){
-        inputVector.y = 0.0f;
-         playerCarInputHandler.SetInput(inputVector);
-    }
+public void OnSteerRelease(){
+    inputVector.x = 0.0f; // Reset x-axis (steering) to move straight
+    playerCarInputHandler.SetInput(inputVector);
+}
+
    
 }
 
