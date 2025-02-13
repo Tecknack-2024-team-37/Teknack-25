@@ -54409,9 +54409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driftFactor: 0.95
-  accelerationFactor: 30
+  accelerationFactor: 20
   turnFactor: 3.5
-  maxSpeed: 20
+  maxSpeed: 5
   velocityVsUp: 0
 --- !u!114 &6273945823136959417
 MonoBehaviour:
