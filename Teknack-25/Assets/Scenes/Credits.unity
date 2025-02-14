@@ -891,7 +891,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 891212969}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999942
+  m_Size: 0.99999523
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1087,19 +1087,19 @@ MonoBehaviour:
 
 
 
-    Harshal Bhosale - Game Design, UI, Sound.
+    Harshal Bhosale - Game Design, UI, Sound, Scene Designing.
 
 
     Pranit
-    Chiman - Designing, Backend.
+    Chiman - Scene designing, Backend.
 
 
-    Rakesh Chaudhary - Scene Design, Backend.
+    Rakesh Chaudhary - Scene Designing,
+    Backend.
 
 
 
-    Kenny,Pretty
-    fly games, Freepik
+    Kenny,Pretty fly games, Freepik
 
 '
 --- !u!222 &833433441
@@ -1218,7 +1218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000111032, y: 0.0008490857}
+  m_AnchoredPosition: {x: -0.000111032, y: -0.00004532502}
   m_SizeDelta: {x: -0.5004, y: 532.5026}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1437747693
