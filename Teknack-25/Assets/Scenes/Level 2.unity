@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 0}
+  settingUI: {fileID: 0}
 --- !u!4 &294346069
 Transform:
   m_ObjectHideFlags: 0
@@ -110510,6 +110511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 0}
+  settingUI: {fileID: 0}
 --- !u!4 &1376003354
 Transform:
   m_ObjectHideFlags: 0
