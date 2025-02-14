@@ -162,7 +162,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Race2D.Teknack25
+    Android: com.Teknack.Race2D
     Standalone: com.DefaultCompany.Teknack-25
   buildNumber:
     Standalone: 0

@@ -82397,7 +82397,7 @@ MonoBehaviour:
   driftFactor: 0.95
   accelerationFactor: 20
   turnFactor: 3.5
-  maxSpeed: 9
+  maxSpeed: 5
   velocityVsUp: 0
 --- !u!114 &6273945823136959417
 MonoBehaviour:
@@ -82442,7 +82442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7220937367343214011
 Transform:
   m_ObjectHideFlags: 0
