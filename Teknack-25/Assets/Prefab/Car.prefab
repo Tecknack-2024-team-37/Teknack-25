@@ -498,14 +498,6 @@ MonoBehaviour:
   accelerationFactor: 40
   turnFactor: 3
   maxSpeed: 6
-  carSpriteRenderer: {fileID: 3059567534677067976}
-  carShadowRenderer: {fileID: 7611096485497120889}
-  jumpCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   velocityVsUp: 0
 --- !u!114 &6794119938490829555
 MonoBehaviour:
@@ -519,7 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8045ac385028f0842a9e4c2bccc2582e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpScale: 0
+  isUIInput: 0
 --- !u!61 &3472640849595344290
 BoxCollider2D:
   m_ObjectHideFlags: 0

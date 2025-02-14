@@ -10,6 +10,9 @@ TagManager:
   - UnderpassTrigger
   - UnderpassCollider
   - UnderpassExitTrigger
+  - Jump
+  - Border
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
