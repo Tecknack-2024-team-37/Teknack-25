@@ -4,44 +4,49 @@ using UnityEngine;
 
 public class WheelParticleHandler : MonoBehaviour
 {
-    //local variables
-    float particleEmissionRate = 0;
+    // Local variables
+    private float particleEmissionRate = 0;
 
-    //components
-    TopDownCarController topDownCarController;
-    
-    ParticleSystem particleSystemSmoke;
-    ParticleSystem.EmissionModule particleSystemEmissionModule;
+    // Components
+    private CarController carController;
+    private ParticleSystem particleSystemSmoke;
+    private ParticleSystem.EmissionModule particleSystemEmissionModule;
 
     void Awake()
     {
-        topDownCarController = GetComponentInParent<TopDownCarController>();
-
+        carController = GetComponentInParent<CarController>();
         particleSystemSmoke = GetComponent<ParticleSystem>();
 
-        particleSystemEmissionModule = particleSystemSmoke.emission;
+        if (carController == null)
+        {
+            Debug.LogError("WheelParticleHandler: No CarController found on parent of " + gameObject.name);
+        }
 
-        particleSystemEmissionModule.rateOverTime = 0;
-    }
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        if (particleSystemSmoke == null)
+        {
+            Debug.LogError("WheelParticleHandler: No ParticleSystem found on " + gameObject.name);
+        }
+        else
+        {
+            particleSystemEmissionModule = particleSystemSmoke.emission;
+            particleSystemEmissionModule.rateOverTime = 0;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //reduce the particle over time
+        if (carController == null || particleSystemSmoke == null) return; // Prevent errors
+
+        // Reduce the particle emission over time
         particleEmissionRate = Mathf.Lerp(particleEmissionRate, 0, Time.deltaTime * 5);
         particleSystemEmissionModule.rateOverTime = particleEmissionRate;
 
-        if (topDownCarController.IsTyreScreeching(out float lateralVelocity, out bool isBraking))
+        if (carController.IsTyreScreeching(out float lateralVelocity, out bool isBraking))
         {
-            if(isBraking)
+            if (isBraking)
                 particleEmissionRate = 30;
-            else particleEmissionRate = Mathf.Abs(lateralVelocity) * 2;
+            else
+                particleEmissionRate = Mathf.Abs(lateralVelocity) * 2;
         }
     }
 }
