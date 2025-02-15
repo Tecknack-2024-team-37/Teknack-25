@@ -5,9 +5,6 @@ using UnityEngine.SceneManagement;
 public class Credits : MonoBehaviour
 {
 
-
- 
-
   public void BackFromCredits(){
     SceneManager.LoadSceneAsync(0);
    }

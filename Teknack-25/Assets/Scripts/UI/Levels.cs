@@ -17,4 +17,8 @@ public class Levels : MonoBehaviour
    public void PlayLevel2(){
     SceneManager.LoadSceneAsync(4);
    }
+
+   public void PlayLevel3(){
+    SceneManager.LoadSceneAsync(6);
+   }
 }
