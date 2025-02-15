@@ -131,7 +131,7 @@ Transform:
   m_GameObject: {fileID: 2340724337530190494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.313986, y: -14.122521, z: 10.2532}
+  m_LocalPosition: {x: -25.384, y: -13.902, z: 10.2532}
   m_LocalScale: {x: 0.107870966, y: 0.107870966, z: 0.107870966}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -618,7 +618,7 @@ ParticleSystem:
         m_RotationOrder: 0
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 30
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -5206,7 +5206,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -951.45, y: -591.83, z: 0}
-  m_LocalScale: {x: 0.17852047, y: 0.17852047, z: 0.17852047}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.17852047}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4536716632643663847}
@@ -5273,7 +5273,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1253346, y: 4.5480337}
+  m_Offset: {x: 1.112627, y: 4.5861516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5284,7 +5284,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5999205, y: 5.5171986}
+  m_Size: {x: 2.1170425, y: 3.5602684}
   m_EdgeRadius: 0
 --- !u!114 &6455724315488237547
 MonoBehaviour:
@@ -5484,7 +5484,7 @@ Transform:
   m_GameObject: {fileID: 8745664163428597712}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.793365, y: -14.13374, z: 10.2532}
+  m_LocalPosition: {x: -25.725, y: -13.900009, z: 10.2532}
   m_LocalScale: {x: 0.107870966, y: 0.107870966, z: 0.107870966}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5971,7 +5971,7 @@ ParticleSystem:
         m_RotationOrder: 0
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 30
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
