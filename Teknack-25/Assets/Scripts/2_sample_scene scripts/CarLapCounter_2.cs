@@ -9,6 +9,7 @@ public class CarLapCounter_2 : MonoBehaviour
 {
     [Header("UI Elements")]
     public TMP_Text carPositionText; // ✅ Change from Text to TMP_Text
+    public TMP_Text lapCounterText;
     public Button restartButton;
     public Button mainMenuButton;
     public GameObject GameOverPanel;
@@ -27,10 +28,35 @@ public class CarLapCounter_2 : MonoBehaviour
     private bool isHideRoutineRunning = false;
     private float hideUIDelayTime;
 
+    private float raceStartTime; // ✅ Tracks when the race starts
+    private float raceEndTime;   // ✅ Tracks when the race ends
+    public TMP_Text timeTakenText; // ✅ Add this to show final time
+    public TMP_Text liveTimeText; // ✅ Live updating timer
+
+
+
     public event Action<CarLapCounter_2> onPassCheckPoint;
 
     void Start()
     {
+        raceStartTime = Time.time; // ✅ Capture race start time
+        UpdateLapUI();
+        if (liveTimeText == null)
+        {
+        Debug.LogError("LiveTimeText is NOT assigned in the Inspector!");
+        }
+
+        if (timeTakenText == null)
+        {
+            Debug.LogError("Time Taken Text is NOT assigned in the Inspector!");
+        }
+
+        if (lapCounterText == null)
+        {
+            Debug.LogError("Lap Counter Text is not assigned in the Inspector!");
+        }
+        UpdateLapUI();
+
         if (GameOverPanel == null)
         {
             Debug.LogError("GameOverPanel is NOT assigned in the Inspector!");
@@ -92,6 +118,28 @@ public class CarLapCounter_2 : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (!isRaceCompleted) // ✅ Only update time if race is still running
+        {
+        float elapsedTime = Time.time - raceStartTime;
+        UpdateTimeUI(elapsedTime);
+        }
+    }
+
+    void UpdateTimeUI(float time)
+    {
+        if (timeTakenText != null)
+        {
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
+        
+        timeTakenText.text = $"Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+        }
+    }
+
+
     void OnTriggerEnter2D(Collider2D collider2D)
     {
         Debug.Log("Car collided with: " + collider2D.gameObject.name);
@@ -128,10 +176,14 @@ public class CarLapCounter_2 : MonoBehaviour
                     passedCheckPointNumber = 0;
                     lapsCompleted++;
                     Debug.Log("Laps Completed: " + lapsCompleted);
+                    UpdateLapUI(); // ✅ Update UI when lap increases
 
                     if (lapsCompleted >= lapsToComplete)
                     {
                         isRaceCompleted = true;
+                        raceEndTime = Time.time; // ✅ Capture race end time
+                        float totalTimeTaken = raceEndTime - raceStartTime;
+                        ShowFinalTime(totalTimeTaken); // ✅ Display the final time
                         Debug.Log("Race Completed!!!");
                         EndGame();
                     }
@@ -147,6 +199,41 @@ public class CarLapCounter_2 : MonoBehaviour
         }
     }
 
+    void UpdateLapUI()
+    {
+        if (lapCounterText != null)
+        {
+            lapCounterText.text = $"Laps: {lapsCompleted}/{lapsToComplete}";
+        }
+    }
+
+    void ShowFinalTime(float totalTime)
+    {
+        isRaceCompleted = true; // ✅ Stop the timer when race ends
+
+        if (timeTakenText != null)
+        {
+        int minutes = Mathf.FloorToInt(totalTime / 60);
+        int seconds = Mathf.FloorToInt(totalTime % 60);
+        int milliseconds = Mathf.FloorToInt((totalTime * 1000) % 1000);
+
+        timeTakenText.text = $"Final Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+        }
+    }
+
+    void UpdateLiveTime(float elapsedTime)
+    {
+        if (liveTimeText != null)
+        {
+        int minutes = Mathf.FloorToInt(elapsedTime / 60);
+        int seconds = Mathf.FloorToInt(elapsedTime % 60);
+        int milliseconds = Mathf.FloorToInt((elapsedTime * 1000) % 1000);
+        
+        liveTimeText.text = $"Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+        }
+    }
+
+
     void EndGame()
     {
         if (GameOverPanel == null)
@@ -154,7 +241,6 @@ public class CarLapCounter_2 : MonoBehaviour
             Debug.LogError("GameOverPanel is NULL when trying to show it!");
             return;
         }
-
         Time.timeScale = 0f;
         GameOverPanel.SetActive(true);
         Debug.Log("EndGame() called");
