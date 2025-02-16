@@ -32,8 +32,8 @@ public class CarLapCounter_2 : MonoBehaviour
     private float raceEndTime;   // ✅ Tracks when the race ends
     public TMP_Text timeTakenText; // ✅ Add this to show final time
     public TMP_Text liveTimeText; // ✅ Live updating timer
-
-
+    public TMP_Text bestTimeText; // ✅ Assign in Inspector
+    public TMP_Text finalTimeText; // ✅ This will show the final time at a new position
 
     public event Action<CarLapCounter_2> onPassCheckPoint;
 
@@ -41,6 +41,18 @@ public class CarLapCounter_2 : MonoBehaviour
     {
         raceStartTime = Time.time; // ✅ Capture race start time
         UpdateLapUI();
+
+         // ✅ Load best time from PlayerPrefs
+        float bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
+        if (bestTime < float.MaxValue && bestTimeText != null)
+        {
+        int bestMinutes = Mathf.FloorToInt(bestTime / 60);
+        int bestSeconds = Mathf.FloorToInt(bestTime % 60);
+        int bestMilliseconds = Mathf.FloorToInt((bestTime * 1000) % 1000);
+
+        bestTimeText.text = $"Best Time: {bestMinutes:D2}:{bestSeconds:D2}.{bestMilliseconds:D3}";
+        }
+
         if (liveTimeText == null)
         {
         Debug.LogError("LiveTimeText is NOT assigned in the Inspector!");
@@ -80,6 +92,23 @@ public class CarLapCounter_2 : MonoBehaviour
             restartButton.onClick.AddListener(RestartRace);
             mainMenuButton.onClick.AddListener(GoToMainMenu);
         }
+    }
+
+    public void ResetBestTime()
+    {
+        void ResetBestTime()
+        {
+        PlayerPrefs.DeleteKey("BestTime");
+        PlayerPrefs.Save();
+        Debug.Log("Best Time Reset!");
+
+        // ✅ Update UI immediately
+        if (bestTimeText != null)
+        {
+        bestTimeText.text = "Best Time: --:--.---";
+        }
+        }
+
     }
 
     public void SetCarPosition(int position)
@@ -211,15 +240,51 @@ public class CarLapCounter_2 : MonoBehaviour
     {
         isRaceCompleted = true; // ✅ Stop the timer when race ends
 
-        if (timeTakenText != null)
-        {
         int minutes = Mathf.FloorToInt(totalTime / 60);
         int seconds = Mathf.FloorToInt(totalTime % 60);
         int milliseconds = Mathf.FloorToInt((totalTime * 1000) % 1000);
 
         timeTakenText.text = $"Final Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+        string finalTimeString = $"Final Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
+
+        // ✅ Compare with the stored best time and update if necessary
+        float bestTime = PlayerPrefs.GetFloat("BestTime", float.MaxValue);
+
+        // ✅ Hide live timer UI
+        if (liveTimeText != null)
+        {
+            liveTimeText.gameObject.SetActive(false);
         }
+
+        // ✅ Show final time in a different UI element
+        if (finalTimeText != null)
+        {
+        finalTimeText.text = finalTimeString;
+        finalTimeText.gameObject.SetActive(true);
+        }
+        else
+        {
+        Debug.LogError("finalTimeText is NOT assigned in the Inspector!");
+        }
+        if (totalTime < bestTime)
+        {
+            PlayerPrefs.SetFloat("BestTime", totalTime);
+            PlayerPrefs.Save();
+            Debug.Log("New Best Time: " + totalTime);
+
+            // ✅ Update Best Time UI
+            if (bestTimeText != null)
+            {
+                int bestMinutes = Mathf.FloorToInt(totalTime / 60);
+                int bestSeconds = Mathf.FloorToInt(totalTime % 60);
+                int bestMilliseconds = Mathf.FloorToInt((totalTime * 1000) % 1000);
+        
+                bestTimeText.text = $"Best Time: {bestMinutes:D2}:{bestSeconds:D2}.{bestMilliseconds:D3}";
+            }
+        }
+
     }
+
 
     void UpdateLiveTime(float elapsedTime)
     {
@@ -238,9 +303,15 @@ public class CarLapCounter_2 : MonoBehaviour
     {
         if (GameOverPanel == null)
         {
-            Debug.LogError("GameOverPanel is NULL when trying to show it!");
-            return;
+        Debug.LogError("GameOverPanel is NULL when trying to show it!");
+        return;
         }
+
+        // ✅ Disable UI Elements
+        if (timeTakenText != null) timeTakenText.gameObject.SetActive(false);
+        if (lapCounterText != null) lapCounterText.gameObject.SetActive(false);
+        if (liveTimeText != null) liveTimeText.gameObject.SetActive(false);
+
         Time.timeScale = 0f;
         GameOverPanel.SetActive(true);
         Debug.Log("EndGame() called");
