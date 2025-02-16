@@ -110,5 +110,9 @@ public class CarController : MonoBehaviour
 
     return isScreeching;
 }
+public float GetVelocityMagnitude()
+    {
+        return carRigidbody2D.velocity.magnitude;
+    }
 
 }

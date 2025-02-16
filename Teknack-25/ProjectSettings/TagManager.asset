@@ -13,6 +13,7 @@ TagManager:
   - Jump
   - Border
   - CheckPoint
+  - FinishLine
   layers:
   - Default
   - TransparentFX
