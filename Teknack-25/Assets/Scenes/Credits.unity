@@ -155,6 +155,7 @@ RectTransform:
   m_Children:
   - {fileID: 317439069}
   - {fileID: 584093910}
+  - {fileID: 200793619}
   m_Father: {fileID: 1437747697}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -337,12 +338,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 726018849}
-  m_Father: {fileID: 1437747697}
+  m_Father: {fileID: 139681}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 243, y: -94}
-  m_SizeDelta: {x: 320.5347, y: 85.3728}
+  m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200793620
 MonoBehaviour:
@@ -903,7 +904,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 891212969}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999984
+  m_Size: 0.9879821
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1190,7 +1191,7 @@ MonoBehaviour:
 
 
     sound
-    assets - soundcloud, mixtip.
+    assets - soundcloud, mixkit.
 
 '
 --- !u!222 &833433441
@@ -1310,7 +1311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: 0.00068728323}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -0.000014446519}
   m_SizeDelta: {x: -0.026245, y: 532.5026}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1394602288
@@ -1537,7 +1538,6 @@ RectTransform:
   m_Children:
   - {fileID: 287417830}
   - {fileID: 195330203}
-  - {fileID: 200793619}
   - {fileID: 139681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
