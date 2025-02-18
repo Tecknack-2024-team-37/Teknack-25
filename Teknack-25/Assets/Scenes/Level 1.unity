@@ -71551,6 +71551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 1405429152}
   settingUI: {fileID: 1729811766}
+  Finish: {fileID: 0}
 --- !u!4 &937322830974320280
 Transform:
   m_ObjectHideFlags: 0
