@@ -735,9 +735,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5704065520535487138, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 212953761}
-    - targetCorrespondingSourceObject: {fileID: 5704065520535487138, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 212953762}
   m_SourcePrefab: {fileID: 100100000, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
 --- !u!4 &212953752 stripped
 Transform:
@@ -106098,7 +106095,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.76124
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
