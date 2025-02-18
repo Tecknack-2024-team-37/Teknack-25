@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,12 @@ using UnityEngine.SceneManagement;
 public class CarLapCounter_2 : MonoBehaviour
 {
     [Header("UI Elements")]
-    public Text carPositionText;  
+    public Text carPositionText;
     public Text lapCounterText;
-    public Button restartButton;
-    public Button mainMenuButton;
     public GameObject GameOverPanel;
+    public Text timeTakenText;
+    public Text bestTimeText;
+    public Text finalTimeText;
 
     [Header("Race Variables")]
     private int passedCheckPointNumber = 0;
@@ -29,15 +31,10 @@ public class CarLapCounter_2 : MonoBehaviour
     private float hideUIDelayTime;
 
     private float raceStartTime;
-    private float raceEndTime;  
-    public Text timeTakenText;
-    public Text liveTimeText;
-    public Text bestTimeText;
-    public Text finalTimeText;
+    private float raceEndTime;
+    private string sceneBestTimeKey;
 
     public event Action<CarLapCounter_2> onPassCheckPoint;
-
-    private string sceneBestTimeKey;
 
     void Start()
     {
@@ -64,22 +61,14 @@ public class CarLapCounter_2 : MonoBehaviour
         {
             GameOverPanel.SetActive(false);
         }
-
-        if (restartButton != null && mainMenuButton != null)
-        {
-            restartButton.onClick.AddListener(RestartRace);
-            mainMenuButton.onClick.AddListener(GoToMainMenu);
-        }
     }
 
     void ValidateUIElements()
     {
-        if (liveTimeText == null) Debug.LogError("LiveTimeText is NOT assigned in the Inspector!");
         if (timeTakenText == null) Debug.LogError("Time Taken Text is NOT assigned in the Inspector!");
         if (lapCounterText == null) Debug.LogError("Lap Counter Text is not assigned in the Inspector!");
         if (GameOverPanel == null) Debug.LogError("GameOverPanel is NOT assigned in the Inspector!");
         if (carPositionText == null) Debug.LogError("carPositionText (Text) is NOT assigned in the Inspector!");
-        if (restartButton == null || mainMenuButton == null) Debug.LogError("RestartButton or MainMenuButton is NOT assigned in the Inspector!");
     }
 
     public void ResetBestTime()
@@ -146,7 +135,7 @@ public class CarLapCounter_2 : MonoBehaviour
             int minutes = Mathf.FloorToInt(time / 60);
             int seconds = Mathf.FloorToInt(time % 60);
             int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
-        
+
             timeTakenText.text = $"Time: {minutes:D2}:{seconds:D2}.{milliseconds:D3}";
         }
     }
@@ -211,11 +200,6 @@ public class CarLapCounter_2 : MonoBehaviour
 
         float bestTime = PlayerPrefs.GetFloat(sceneBestTimeKey, float.MaxValue);
 
-        if (liveTimeText != null)
-        {
-            liveTimeText.gameObject.SetActive(false);
-        }
-
         if (finalTimeText != null)
         {
             finalTimeText.text = timeTakenText.text;
@@ -244,26 +228,8 @@ public class CarLapCounter_2 : MonoBehaviour
 
         if (timeTakenText != null) timeTakenText.gameObject.SetActive(false);
         if (lapCounterText != null) lapCounterText.gameObject.SetActive(false);
-        if (liveTimeText != null) liveTimeText.gameObject.SetActive(false);
 
         Time.timeScale = 0f;
         GameOverPanel.SetActive(true);
-    }
-
-    void RestartRace()
-    {
-        Time.timeScale = 1f;
-        lapsCompleted = 0;
-
-        if (GameOverPanel != null)
-            GameOverPanel.SetActive(false);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    void GoToMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenuScene");
     }
 }
