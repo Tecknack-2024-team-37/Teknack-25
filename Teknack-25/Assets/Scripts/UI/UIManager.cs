@@ -9,7 +9,9 @@ public class UIManager : MonoBehaviour
 {
     public GameObject pauseUI;
     public GameObject settingUI;
-    private bool isPaused = false;  
+    private bool isPaused = false; 
+    public GameObject Finish;
+    private int lapsCompleted = 0;
 
     private CarUIInputHandler[] inputHandlers; // Reference to all input handlers
     private Button[] uiButtons; // Reference to UI buttons (Pause & Settings)
@@ -39,6 +41,12 @@ public class UIManager : MonoBehaviour
 
     public void OnRestartPress()
     {
+        Time.timeScale = 1f;
+        lapsCompleted = 0;
+
+        if (Finish != null)
+            Finish.SetActive(false);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
