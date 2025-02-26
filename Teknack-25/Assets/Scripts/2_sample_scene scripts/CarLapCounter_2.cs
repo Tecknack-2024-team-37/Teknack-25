@@ -68,7 +68,7 @@ public class CarLapCounter_2 : MonoBehaviour
         if (timeTakenText == null) Debug.LogError("Time Taken Text is NOT assigned in the Inspector!");
         if (lapCounterText == null) Debug.LogError("Lap Counter Text is not assigned in the Inspector!");
         if (GameOverPanel == null) Debug.LogError("GameOverPanel is NOT assigned in the Inspector!");
-        if (carPositionText == null) Debug.LogError("carPositionText (Text) is NOT assigned in the Inspector!");
+        // if (carPositionText == null) Debug.LogError("carPositionText (Text) is NOT assigned in the Inspector!");
     }
 
     public void ResetBestTime()

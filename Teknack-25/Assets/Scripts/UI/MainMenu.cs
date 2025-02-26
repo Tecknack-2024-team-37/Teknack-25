@@ -20,4 +20,8 @@ public class MainMenu : MonoBehaviour
   public void OnEnterCreditsPress(){
     SceneManager.LoadSceneAsync(5);
   }
+
+  public void OnEnterExitButton(){
+    Application.Quit();
+  }
 }

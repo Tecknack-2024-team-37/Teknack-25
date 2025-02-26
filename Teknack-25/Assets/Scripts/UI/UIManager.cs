@@ -26,7 +26,7 @@
 
 //     private void ToggleInputHandlers(bool enable)
 //     {
-//         // Enable/Disable Car Input Scripts
+//         // Enable/Disable Car Input  ipts
 //         foreach (CarUIInputHandler handler in inputHandlers)
 //         {
 //             handler.enabled = enable;
