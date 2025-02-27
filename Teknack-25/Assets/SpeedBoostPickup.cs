@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpeedBoostPickup : MonoBehaviour
 {
-    public float boostAmount = 1.0f; // Amount of boost to add
+    public float boostAmount = 0.7f; // Amount of boost to add
 
     private void OnTriggerEnter2D(Collider2D other)
     {
