@@ -1,51 +1,142 @@
-using UnityEngine;
-using UnityEngine.UI;
+// using System;
+// using System.Collections;
+// using UnityEngine;
+// using UnityEngine.Events;
+// using UnityEngine.EventSystems;
+// using UnityEngine.UI;
 
-public class SwitchToggle : MonoBehaviour
-{
-    [SerializeField] RectTransform uiHandleRectTransform;
-    [SerializeField] Color backgroundActiveColor;
-    [SerializeField] Color handleActiveColor;
-
-    Image backgroundImage, handleImage;
-
-    Color backgroundDefaultColor, handleDefaultColor;
-
-    Toggle toggle; // Corrected from SwitchToggle to Toggle
-    Vector2 handlePosition;
-
-    void Awake() {
-        toggle = GetComponent<Toggle>();
-        if (toggle == null) {
-            Debug.LogError("Toggle component not found!", this);
-            return;
-        }
-
-        handlePosition = uiHandleRectTransform != null ? uiHandleRectTransform.anchoredPosition : Vector2.zero;
+// namespace Christina.UI
+// {
+//     public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
+//     {
+//         [Header("Slider setup")] 
+//         [SerializeField, Range(0, 1f)]
+//         protected float sliderValue;
+//         public bool CurrentValue { get; private set; }
         
-        backgroundImage = uiHandleRectTransform.parent.GetComponent<Image>();
-        handleImage = uiHandleRectTransform.GetComponent<Image>();
+//         private bool _previousValue;
+//         private Slider _slider;
 
-        backgroundDefaultColor = backgroundImage.color;
-        handleDefaultColor = handleImage.color;
+//         [Header("Animation")] 
+//         [SerializeField, Range(0, 1f)] private float animationDuration = 0.5f;
+//         [SerializeField] private AnimationCurve slideEase =
+//             AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-        toggle.onValueChanged.AddListener(OnSwitch);
+//         private Coroutine _animateSliderCoroutine;
 
-        if (toggle.isOn)
-            OnSwitch(true);
-    }
+//         [Header("Events")] 
+//         [SerializeField] private UnityEvent onToggleOn;
+//         [SerializeField] private UnityEvent onToggleOff;
 
-    void OnSwitch(bool on) {
-        if (uiHandleRectTransform != null)
-            uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition;
-    
-        backgroundImage.color = on ? backgroundActiveColor : backgroundDefaultColor;
-        handleImage.color = on ? handleActiveColor : handleDefaultColor;
+//         private ToggleSwitchGroupManager _toggleSwitchGroupManager;
+        
+//         protected Action transitionEffect;
+        
+//         protected virtual void OnValidate()
+//         {
+//             SetupToggleComponents();
 
-    }
+//             _slider.value = sliderValue;
+//         }
 
-    void OnDestroy() {
-        if (toggle != null)
-            toggle.onValueChanged.RemoveListener(OnSwitch);
-    }
-}
+//         private void SetupToggleComponents()
+//         {
+//             if (_slider != null)
+//                 return;
+
+//             SetupSliderComponent();
+//         }
+
+//         private void SetupSliderComponent()
+//         {
+//             _slider = GetComponent<Slider>();
+
+//             if (_slider == null)
+//             {
+//                 Debug.Log("No slider found!", this);
+//                 return;
+//             }
+
+//             _slider.interactable = false;
+//             var sliderColors = _slider.colors;
+//             sliderColors.disabledColor = Color.white;
+//             _slider.colors = sliderColors;
+//             _slider.transition = Selectable.Transition.None;
+//         }
+        
+//         public void SetupForManager(ToggleSwitchGroupManager manager)
+//         {
+//             _toggleSwitchGroupManager = manager;
+//         }
+
+
+//         protected virtual void Awake()
+//         {
+//             SetupSliderComponent();
+//         }
+
+//         public void OnPointerClick(PointerEventData eventData)
+//         {
+//             Toggle();
+//         }
+
+        
+//         private void Toggle()
+//         {
+//             if (_toggleSwitchGroupManager != null)
+//                 _toggleSwitchGroupManager.ToggleGroup(this);
+//             else
+//                 SetStateAndStartAnimation(!CurrentValue);
+//         }
+
+//         public void ToggleByGroupManager(bool valueToSetTo)
+//         {
+//             SetStateAndStartAnimation(valueToSetTo);
+//         }
+        
+        
+//         private void SetStateAndStartAnimation(bool state)
+//         {
+//             _previousValue = CurrentValue;
+//             CurrentValue = state;
+
+//             if (_previousValue != CurrentValue)
+//             {
+//                 if (CurrentValue)
+//                     onToggleOn?.Invoke();
+//                 else
+//                     onToggleOff?.Invoke();
+//             }
+
+//             if (_animateSliderCoroutine != null)
+//                 StopCoroutine(_animateSliderCoroutine);
+
+//             _animateSliderCoroutine = StartCoroutine(AnimateSlider());
+//         }
+
+
+//         private IEnumerator AnimateSlider()
+//         {
+//             float startValue = _slider.value;
+//             float endValue = CurrentValue ? 1 : 0;
+
+//             float time = 0;
+//             if (animationDuration > 0)
+//             {
+//                 while (time < animationDuration)
+//                 {
+//                     time += Time.deltaTime;
+
+//                     float lerpFactor = slideEase.Evaluate(time / animationDuration);
+//                     _slider.value = sliderValue = Mathf.Lerp(startValue, endValue, lerpFactor);
+
+//                     transitionEffect?.Invoke();
+                        
+//                     yield return null;
+//                 }
+//             }
+
+//             _slider.value = endValue;
+//         }
+//     }
+// }
