@@ -749,6 +749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joystick_Car
       objectReference: {fileID: 0}
+    - target: {fileID: 5704065520535487138, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6455724315488237547, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
       propertyPath: boostBar
       value: 
