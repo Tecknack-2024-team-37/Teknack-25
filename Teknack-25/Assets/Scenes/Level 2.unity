@@ -749,6 +749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joystick_Car
       objectReference: {fileID: 0}
+    - target: {fileID: 5704065520535487138, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 6455724315488237547, guid: 0aa1caa7e378d864f9844eaebea43396, type: 3}
       propertyPath: boostBar
       value: 
@@ -98197,7 +98201,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 58
+      m_TileSpriteIndex: 60
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -99357,7 +99361,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 28
-      m_TileSpriteIndex: 57
+      m_TileSpriteIndex: 58
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -99557,7 +99561,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 31
-      m_TileSpriteIndex: 50
+      m_TileSpriteIndex: 57
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -99567,7 +99571,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 30
-      m_TileSpriteIndex: 49
+      m_TileSpriteIndex: 50
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -99747,7 +99751,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 29
-      m_TileSpriteIndex: 31
+      m_TileSpriteIndex: 49
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -101387,7 +101391,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 27
-      m_TileSpriteIndex: 30
+      m_TileSpriteIndex: 31
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -102307,7 +102311,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 23
-      m_TileSpriteIndex: 29
+      m_TileSpriteIndex: 30
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -104442,12 +104446,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 1427f8c0e94a4064797c09e863fb46c9, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: c65ff8090073dde4db145b7bd4873288, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: aa31411425ca09949bedb10a4dee7b76, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 45ad1e9acc9501f41a1f8fc11f116a99, type: 3}
   - m_RefCount: 49
     m_Data: {fileID: 21300000, guid: c28b8b1bb849b414b96a129ea75ec445, type: 3}
   - m_RefCount: 169
@@ -104483,9 +104487,9 @@ Tilemap:
   - m_RefCount: 8
     m_Data: {fileID: 21300000, guid: 0f9b4bcd9a3d8d742b432e5ecfb173cd, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 7d7db5442b21a4d49a4a441962208f08, type: 3}
+    m_Data: {fileID: 21300000, guid: 45ad1e9acc9501f41a1f8fc11f116a99, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 88c7e43f9d8a0e3419c6a4e5e2bcf847, type: 3}
+    m_Data: {fileID: 21300000, guid: 7d7db5442b21a4d49a4a441962208f08, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: d9c84eac10682904fa8413383f02f2e5, type: 3}
   - m_RefCount: 2
@@ -104499,13 +104503,13 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: 9a119218bfefb544188e8fa5f6469636, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 8dbf583a808ded349928aa33a6ec8208, type: 3}
+    m_Data: {fileID: 21300000, guid: 88c7e43f9d8a0e3419c6a4e5e2bcf847, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: ace4a7d1b501cb14aaa65c80b0d729c6, type: 3}
+    m_Data: {fileID: 21300000, guid: 8dbf583a808ded349928aa33a6ec8208, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 82fdba533982c704b9d53037d5e06dce, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: ace4a7d1b501cb14aaa65c80b0d729c6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 9734ea08fe0dda94e8085dbbf4595106, type: 3}
   - m_RefCount: 1
@@ -115014,6 +115018,10 @@ PrefabInstance:
     - target: {fileID: 1073706052535159606, guid: 15e347dbcd2733348be5aca07956a906, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3594217995394159750, guid: 15e347dbcd2733348be5aca07956a906, type: 3}
+      propertyPath: boostAmount
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7841651792785105032, guid: 15e347dbcd2733348be5aca07956a906, type: 3}
       propertyPath: m_Name
