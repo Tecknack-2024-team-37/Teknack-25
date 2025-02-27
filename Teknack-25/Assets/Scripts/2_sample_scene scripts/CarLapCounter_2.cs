@@ -226,8 +226,8 @@ public class CarLapCounter_2 : MonoBehaviour
             return;
         }
 
-        if (timeTakenText != null) timeTakenText.gameObject.SetActive(false);
-        if (lapCounterText != null) lapCounterText.gameObject.SetActive(false);
+        // if (timeTakenText != null) timeTakenText.gameObject.SetActive(false);
+        // if (lapCounterText != null) lapCounterText.gameObject.SetActive(false);
 
         Time.timeScale = 0f;
         GameOverPanel.SetActive(true);
