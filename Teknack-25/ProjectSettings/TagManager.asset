@@ -15,6 +15,9 @@ TagManager:
   - CheckPoint
   - FinishLine
   - Boost
+  - Oil
+  - Sand
+  - Grass
   layers:
   - Default
   - TransparentFX
