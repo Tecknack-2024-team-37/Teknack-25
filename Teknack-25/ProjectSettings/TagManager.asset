@@ -18,6 +18,7 @@ TagManager:
   - Oil
   - Sand
   - Grass
+  - LapTrigger
   layers:
   - Default
   - TransparentFX

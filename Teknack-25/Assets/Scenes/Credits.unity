@@ -903,7 +903,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 891212969}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999887
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1174,23 +1174,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Harshal Bhosale - Game Design, UI, Sound, Scene Designing.
+  m_Text: 'Designed and Developed by:
 
 
-    Pranit
-    Chiman - Scene designing, Background, Backend.
+    Harshal Bhosale
+
+    Pranit Chiman
+
+    Rakesh
+    Chaudhary
 
 
-    Rakesh Chaudhary - Scene
-    Designing, Backend.
+    2d assets - Kenny''s assets,Pretty fly games, Freepik, IconsDB.
 
 
-
-    2d assets - Kenny''s assets,Pretty fly games, Freepik,
-    IconsDB.
-
-
-    sound assets - soundcloud, mixkit.
+    sound
+    assets - soundcloud, mixkit.
 
 '
 --- !u!222 &833433441
@@ -1310,7 +1309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0000038146973, y: -0.000062704254}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -0.00006994319}
   m_SizeDelta: {x: -0.026245, y: 532.5026}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1394602288
