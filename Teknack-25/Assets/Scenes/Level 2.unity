@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownTime: 3
   countdownDisplay: {fileID: 380563168}
+  pauseButton: {fileID: 1945737360}
 --- !u!4 &266914996
 Transform:
   m_ObjectHideFlags: 0
@@ -114446,6 +114447,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871517124354337011, guid: 0468e78e355afb343a3d2f74f949e592, type: 3}
   m_PrefabInstance: {fileID: 1175170500}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1945737360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5225927402164174687, guid: 0468e78e355afb343a3d2f74f949e592, type: 3}
+  m_PrefabInstance: {fileID: 1175170500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1948147410
 GameObject:
   m_ObjectHideFlags: 0
