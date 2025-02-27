@@ -21578,6 +21578,8 @@ MonoBehaviour:
   pauseUI: {fileID: 5713763219063553227}
   settingUI: {fileID: 6434687236461347518}
   Finish: {fileID: 0}
+  joystickTransform: {fileID: 0}
+  boostButtonTransform: {fileID: 0}
 --- !u!4 &734125107
 Transform:
   m_ObjectHideFlags: 0
@@ -83991,7 +83993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4689022426340374144
 GameObject:
   m_ObjectHideFlags: 0
@@ -84145,7 +84147,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 294, y: -88}
+  m_AnchoredPosition: {x: 1076, y: -88}
   m_SizeDelta: {x: 295, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5041150917159976643
