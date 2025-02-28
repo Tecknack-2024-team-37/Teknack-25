@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private Vector2 bottomRightJoystick; // Joystick (Bottom Right) - Calculated dynamically
 
     private Vector2 bottomLeftBoost; // Boost (Bottom Left) - Same as Joystick Bottom Left
-    private Vector2 bottomRightBoost = new Vector2(1970f, 333f); // Boost (Bottom Right)
+    private Vector2 bottomRightBoost = new Vector2(2342.111f, 395.9f); // Boost (Bottom Right)
 
     private bool isPaused = false;
     private int lapsCompleted = 0;

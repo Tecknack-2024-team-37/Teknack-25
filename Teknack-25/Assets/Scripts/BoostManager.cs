@@ -4,7 +4,7 @@ public class BoostManager : MonoBehaviour
 {
     public GameObject boostPrefab;
     public Transform[] spawnPoints; // Assign waypoints manually in Inspector
-    public float spawnInterval = 10f;
+    public float spawnInterval = 3f;
 
    private void Start()
 {

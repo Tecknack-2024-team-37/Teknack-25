@@ -38,7 +38,6 @@
 //         }
 //     }
 // }
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -54,7 +53,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         // Get all AudioSources in the scene
-        allSounds = FindObjectsOfType<AudioSource>();
+        FetchAllAudioSources();
 
         // Get button image component
         if (soundToggleButton != null)
@@ -70,6 +69,11 @@ public class SoundManager : MonoBehaviour
         ApplySoundState();
     }
 
+    private void FetchAllAudioSources()
+    {
+        allSounds = FindObjectsOfType<AudioSource>(); // Refresh AudioSources
+    }
+
     public void ToggleSound()
     {
         isSoundOn = !isSoundOn;
@@ -81,11 +85,16 @@ public class SoundManager : MonoBehaviour
 
     private void ApplySoundState()
     {
+        FetchAllAudioSources(); // ✅ Ensure we get newly created AudioSources
+
         // Mute/unmute all sounds
         foreach (AudioSource audioSource in allSounds)
         {
             audioSource.mute = !isSoundOn;
         }
+
+        // Mute AudioListener as a fallback
+        AudioListener.pause = !isSoundOn;
 
         // Change button icon
         if (buttonImage != null)
@@ -94,4 +103,3 @@ public class SoundManager : MonoBehaviour
         }
     }
 }
-

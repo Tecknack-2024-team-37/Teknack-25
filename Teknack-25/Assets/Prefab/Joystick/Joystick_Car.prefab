@@ -5298,6 +5298,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507f1d91710213e4bbf1c3190949b99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boostMultiplier: 1.5
+  maxBoost: 1
+  boostBar: {fileID: 0}
+  boostButton: {fileID: 0}
+  driftText: {fileID: 0}
+  driftTextPrefab: {fileID: 0}
+  gameCanvas: {fileID: 0}
   driftFactor: 0.95
   accelerationFactor: 15
   turnFactor: 1.75
