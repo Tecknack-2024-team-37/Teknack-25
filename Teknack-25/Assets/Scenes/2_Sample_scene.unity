@@ -174,7 +174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &23561624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &121716458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22642,6 +22642,7 @@ MonoBehaviour:
   pauseUI: {fileID: 5713763219063553227}
   settingUI: {fileID: 6434687236461347518}
   Finish: {fileID: 2416391888411220505}
+  toggleSwitch: {fileID: 0}
   joystickTransform: {fileID: 0}
   boostButtonTransform: {fileID: 0}
 --- !u!4 &734125107
@@ -39763,7 +39764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1351986773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85563,7 +85564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2524054482059223599
 CanvasRenderer:
   m_ObjectHideFlags: 0
