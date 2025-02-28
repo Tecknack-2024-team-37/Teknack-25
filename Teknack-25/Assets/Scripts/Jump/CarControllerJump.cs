@@ -697,27 +697,30 @@ public class CarControllerJump : MonoBehaviour
     }
 
     private void ApplyEngineForce()
+{
+    velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
+
+    float speedLimit = isBoosting ? maxSpeed * boostMultiplier : maxSpeed;
+
+    if (velocityVsUp > speedLimit) return;
+    if (carRigidbody2D.velocity.sqrMagnitude > speedLimit * speedLimit) return;
+
+    if (accelerationInput == 0)
     {
-        velocityVsUp = Vector2.Dot(transform.up, carRigidbody2D.velocity);
-
-        float speedLimit = isBoosting ? maxSpeed * boostMultiplier : maxSpeed;
-
-        if (velocityVsUp > maxSpeed) return;
-        if (carRigidbody2D.velocity.sqrMagnitude > maxSpeed * maxSpeed) return;
-
-        if (accelerationInput == 0)
-        {
-            carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 5.0f, Time.fixedDeltaTime * 5);
-            carRigidbody2D.velocity = Vector2.Lerp(carRigidbody2D.velocity, Vector2.zero, Time.fixedDeltaTime * 5);
-        }
-        else
-        {
-            carRigidbody2D.drag = 0.1f;
-        }
-
-        Vector2 engineForceVector = transform.up * accelerationInput * accelerationFactor;
-        carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+        carRigidbody2D.drag = Mathf.Lerp(carRigidbody2D.drag, 5.0f, Time.fixedDeltaTime * 5);
+        carRigidbody2D.velocity = Vector2.Lerp(carRigidbody2D.velocity, Vector2.zero, Time.fixedDeltaTime * 5);
     }
+    else
+    {
+        carRigidbody2D.drag = 0.1f;
+    }
+
+    // Add extra force when boosting
+    float appliedAcceleration = isBoosting ? accelerationFactor * boostMultiplier : accelerationFactor;
+    Vector2 engineForceVector = transform.up * accelerationInput * appliedAcceleration;
+    carRigidbody2D.AddForce(engineForceVector, ForceMode2D.Force);
+}
+
 
     public void CollectBoost(float amount)
     {
@@ -735,20 +738,21 @@ public class CarControllerJump : MonoBehaviour
     }
 
     private IEnumerator BoostRoutine()
+{
+    float boostTime = 3.0f;
+    float elapsed = 0f;
+
+    while (elapsed < boostTime && currentBoost > 0)
     {
-        float boostTime = 3.0f;
-        float elapsed = 0f;
-
-        while (elapsed < boostTime && currentBoost > 0)
-        {
-            elapsed += Time.deltaTime;
-            currentBoost -= Time.deltaTime / boostTime * maxBoost;
-            UpdateBoostUI();
-            yield return null;
-        }
-
-        isBoosting = false;
+        elapsed += Time.deltaTime;
+        currentBoost -= Time.deltaTime / boostTime * maxBoost;
+        UpdateBoostUI();
+        yield return null;
     }
+
+    isBoosting = false;
+}
+
 
     private void UpdateBoostUI()
     {
