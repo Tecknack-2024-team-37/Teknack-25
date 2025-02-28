@@ -89,10 +89,11 @@ public class LoadingManager : MonoBehaviour
         // "Perfect turns will reward you with extra coins!",
         "Drifting at the right moment gives you a speed boost!",
         "Avoid obstacles to maintain maximum speed!",
-        "Upgrade your car for better handling and speed!",
+        // "Upgrade your car for better handling and speed!",
         "Use Nitro Boost wisely to win the race!",
         "Master the tracks to become a racing champion!",
         "Come on Lewis it's Hammer Time",
+        "Complete the race Simply Lovely!",
         "Stay on the racing line for the best performance!"
     };
 
