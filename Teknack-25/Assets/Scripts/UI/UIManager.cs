@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
         settingUI.SetActive(true);
         StartCoroutine(RefreshUI(settingUI));
         ToggleInputHandlers(false);
-        UpdateToggleSwitch(); // ✅ Update toggle state when entering settings
+        // UpdateToggleSwitch(); // ✅ Update toggle state when entering settings
     }
 
     private IEnumerator RefreshUI(GameObject panel)
@@ -192,13 +192,13 @@ public class UIManager : MonoBehaviour
         Debug.Log("📌 Joystick → Bottom Left | Boost → Bottom Right");
     }
 
-    public void UpdateToggleSwitch()
-    {
-        if (toggleSwitch != null)
-        {
-            toggleSwitch.ToggleByGroupManager(!toggleSwitch.CurrentValue);
-        }
-    }
+    // public void UpdateToggleSwitch()
+    // {
+    //     if (toggleSwitch != null)
+    //     {
+    //         toggleSwitch.ToggleByGroupManager(!toggleSwitch.CurrentValue);
+    //     }
+    // }
 }
 
 
