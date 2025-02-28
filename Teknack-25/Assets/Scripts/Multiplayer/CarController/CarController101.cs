@@ -393,10 +393,10 @@ public class CarController101 : MonoBehaviour
 
         bool isScreeching = Mathf.Abs(lateralVelocity) > 2.0f;
 
-        if (isScreeching)
-        {
-            Debug.Log("Tires screeching!");
-        }
+        // if (isScreeching)
+        // {
+        //     Debug.Log("Tires screeching!");
+        // }
 
         return isScreeching;
     }
