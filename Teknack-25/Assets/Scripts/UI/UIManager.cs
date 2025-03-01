@@ -6,6 +6,10 @@ using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
+
+    private const string JoystickPositionKey = "JoystickMode"; // Key to store joystick mode
+
+
     public GameObject pauseUI;
     public GameObject settingUI;
     public GameObject Finish;
@@ -28,27 +32,36 @@ public class UIManager : MonoBehaviour
     private EventTrigger[] eventTriggers;
 
     private void Start()
+{
+    inputHandlers = FindObjectsOfType<CarUIInputHandler>();
+    uiButtons = FindObjectsOfType<Button>();
+    eventTriggers = FindObjectsOfType<EventTrigger>();
+
+    bottomRightJoystick = new Vector2(Screen.width - 400, 400);
+    bottomLeftBoost = bottomLeftJoystick;
+
+    // ✅ Load saved mode (default to 0 if not found)
+    int savedMode = PlayerPrefs.GetInt(JoystickPositionKey, 0);
+
+    if (savedMode == 1)
     {
-        inputHandlers = FindObjectsOfType<CarUIInputHandler>();
-        uiButtons = FindObjectsOfType<Button>();
-        eventTriggers = FindObjectsOfType<EventTrigger>();
-
-        bottomRightJoystick = new Vector2(Screen.width - 400, 400);
-        bottomLeftBoost = bottomLeftJoystick;
-
-        joystickTransform.anchoredPosition = bottomLeftJoystick;
-        boostButtonTransform.anchoredPosition = bottomRightBoost;
-
-        if (settingUI == null)
-            {
-                Debug.LogError("⚠️ settingUI is NOT assigned in the Inspector!");
-            }
-        else
-            {
-                Debug.Log("✅ settingUI is assigned: " + settingUI.name);
-        }
-
+        MoveJoystickRight_BoostLeft(); // Apply saved mode
     }
+    else
+    {
+        MoveJoystickLeft_BoostRight(); // Apply saved mode
+    }
+
+    if (settingUI == null)
+    {
+        Debug.LogError("⚠️ settingUI is NOT assigned in the Inspector!");
+    }
+    else
+    {
+        Debug.Log("✅ settingUI is assigned: " + settingUI.name);
+    }
+}
+
 
     private void ToggleInputHandlers(bool enable)
     {
@@ -159,38 +172,48 @@ public class UIManager : MonoBehaviour
     }
 
     public void MoveJoystickRight_BoostLeft()
+{
+    if (joystickTransform == null || boostButtonTransform == null)
     {
-        if (joystickTransform == null || boostButtonTransform == null)
-        {
-            Debug.LogError("⚠️ Joystick or Boost Button Transform is not assigned!");
-            return;
-        }
-
-        joystickTransform.anchoredPosition = bottomRightJoystick;
-        boostButtonTransform.anchoredPosition = bottomLeftBoost;
-
-        joystickTransform.gameObject.SetActive(true);
-        boostButtonTransform.gameObject.SetActive(true);
-
-        Debug.Log("📌 Joystick → Bottom Right | Boost → Bottom Left");
+        Debug.LogError("⚠️ Joystick or Boost Button Transform is not assigned!");
+        return;
     }
+
+    joystickTransform.anchoredPosition = bottomRightJoystick;
+    boostButtonTransform.anchoredPosition = bottomLeftBoost;
+
+    joystickTransform.gameObject.SetActive(true);
+    boostButtonTransform.gameObject.SetActive(true);
+
+    // ✅ Save the mode (1 = Right Joystick)
+    PlayerPrefs.SetInt(JoystickPositionKey, 1);
+    PlayerPrefs.Save(); // Ensure it is saved
+
+    Debug.Log("📌 Joystick → Bottom Right | Boost → Bottom Left (Saved)");
+}
+
 
     public void MoveJoystickLeft_BoostRight()
+{
+    if (joystickTransform == null || boostButtonTransform == null)
     {
-        if (joystickTransform == null || boostButtonTransform == null)
-        {
-            Debug.LogError("⚠️ Joystick or Boost Button Transform is not assigned!");
-            return;
-        }
-
-        joystickTransform.anchoredPosition = bottomLeftJoystick;
-        boostButtonTransform.anchoredPosition = bottomRightBoost;
-
-        joystickTransform.gameObject.SetActive(true);
-        boostButtonTransform.gameObject.SetActive(true);
-
-        Debug.Log("📌 Joystick → Bottom Left | Boost → Bottom Right");
+        Debug.LogError("⚠️ Joystick or Boost Button Transform is not assigned!");
+        return;
     }
+
+    joystickTransform.anchoredPosition = bottomLeftJoystick;
+    boostButtonTransform.anchoredPosition = bottomRightBoost;
+
+    joystickTransform.gameObject.SetActive(true);
+    boostButtonTransform.gameObject.SetActive(true);
+
+    // ✅ Save the mode (0 = Left Joystick)
+    PlayerPrefs.SetInt(JoystickPositionKey, 0);
+    PlayerPrefs.Save(); // Ensure it is saved
+
+    Debug.Log("📌 Joystick → Bottom Left | Boost → Bottom Right (Saved)");
+}
+
 
     // public void UpdateToggleSwitch()
     // {
