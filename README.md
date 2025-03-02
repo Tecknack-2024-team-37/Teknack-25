@@ -1,7 +1,7 @@
 # LapXtreme - 2D Racing Game
 
 ## 🏎️ Overview
-**LapXtreme** is an adrenaline-fueled racing game that puts players in control of high-speed cars, competing against the clock and opponents to finish laps in record time. With realistic physics, immersive sound effects, and dynamic controls, LapXtreme delivers an intense racing experience!
+**LapXtreme** is an adrenaline-fueled racing game that puts players in control of high-speed cars, competing against the clock to finish laps in record time. With realistic physics, immersive sound effects, and dynamic controls, LapXtreme delivers an intense racing experience!
 
 ## 🎮 Features
 - **Realistic Car Physics**: Smooth handling and precise controls for an immersive racing experience.
